@@ -47,8 +47,6 @@
                         CommandParameter="{Binding ElementName=TasksDataGrid}"/>
                 </Grid>
             </TabItem>
-
-            <TabItem Header="qweqw"></TabItem>
         </TabControl>
     </Grid>
 </Window>

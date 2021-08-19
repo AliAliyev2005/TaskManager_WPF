@@ -1,0 +1,54 @@
+﻿<Window x:Class="TaskManager_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManager_WPF" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="650" Width="900">
+    <Grid>
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem 
+                    Header="Run new task" 
+                    Command="{Binding RunNewTaskCommand}"/>
+                <MenuItem
+                    Header="Exit"
+                    Command="{Binding ExitCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <TabControl Margin="0,20,0,0">
+            <TabItem Header="Process">
+                <Grid>
+                    <DataGrid 
+                        x:Name="TasksDataGrid"
+                        ItemsSource="{Binding Tasks}"
+                        AutoGenerateColumns="False" 
+                        CanUserReorderColumns="False"
+                        Margin="0,0,0,35">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="PID" Width="40" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding ProcessName}"/>
+                            <DataGridTextColumn Header="Module Name" Width="*" Binding="{Binding MainModule.ModuleName}"/>
+                            <DataGridTextColumn Header="Start Time" Width="130" Binding="{Binding StartTime}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button
+                        Width="70" 
+                        Height="25"
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Bottom"
+                        Margin ="5"
+                        Content="End task"
+                        Command="{Binding EndTaskCommand}"
+                        CommandParameter="{Binding ElementName=TasksDataGrid}"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="qweqw"></TabItem>
+        </TabControl>
+    </Grid>
+</Window>
